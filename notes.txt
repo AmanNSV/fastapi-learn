@@ -1,0 +1,11 @@
+parama
+parms type
+predefined values using Enum
+Path parameters containing paths ( Taking a file path as a param )
+
+Query params
+Optional parameters - use none to make optional
+Query parameter type conversion
+Required query param
+
+
