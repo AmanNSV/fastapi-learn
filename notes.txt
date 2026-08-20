@@ -8,4 +8,6 @@ Optional parameters - use none to make optional
 Query parameter type conversion
 Required query param
 
-
+Declare model using pydantic
+Pass query and params with model
+You can use Pydantic models to declare query parameters in FastAPI.
