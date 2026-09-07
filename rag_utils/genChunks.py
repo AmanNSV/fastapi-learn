@@ -44,7 +44,8 @@ async def chunk_pdf(file):
         return {
             "filename": file.filename,
             "total_chunks": len(chunks),
-            # "embeds": embeds
+            # "embeds": embeds,
+            "message":"Success"
         }
 
     finally:

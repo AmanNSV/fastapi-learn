@@ -8,7 +8,7 @@ async def root():
     return {"message": "RAG"}
 
 @app.post("/chunk-pdf")
-async def chunkingPDF(file: UploadFile = File(...)):
+async def chunking_PDF(file: UploadFile = File(...)):
     try:
         got_chunks = await chunk_pdf(file)
         if not got_chunks:

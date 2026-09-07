@@ -6,4 +6,4 @@ langchain-openai # For OPEN API
 langchain-google-genai # For Gemini
 langchain-text-splitters
 langchain_community
-sqlalchemy
+sqlmodel
