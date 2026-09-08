@@ -6,6 +6,10 @@ import os
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from rag_utils.genEmbed import gen_embedding
+from rag_utils.genEmbed import embeddings_model
+from rag_utils.dbConnect import db_url
+
+from langchain_postgres import PGVector
 
 async def chunk_pdf(file):
 
@@ -37,6 +41,15 @@ async def chunk_pdf(file):
 
         # 3. Generate embeddings
         embeds = await gen_embedding(chunks)
+
+        vector_store = PGVector(
+            embeddings=embeddings_model,
+            collection_name="documents",
+            connection=db_url,
+            use_jsonb=True,
+        )
+
+        vector_store.add_documents(chunks)
 
         if not embeds:
             raise HTTPException(detail="Not able to gen embeds")

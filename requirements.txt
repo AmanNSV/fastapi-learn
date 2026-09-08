@@ -7,3 +7,5 @@ langchain-google-genai # For Gemini
 langchain-text-splitters
 langchain_community
 sqlmodel
+langchain-postgres
+sqlalchemy

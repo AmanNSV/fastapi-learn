@@ -1,8 +1,9 @@
 from fastapi import FastAPI, File, UploadFile, HTTPException
 from rag_utils.genChunks import chunk_pdf
+from rag_utils.dbConnect import db_connection
 
 app = FastAPI()
-
+db_connection()
 @app.get("/")
 async def root():
     return {"message": "RAG"}
