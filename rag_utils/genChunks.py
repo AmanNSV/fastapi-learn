@@ -11,7 +11,9 @@ from rag_utils.dbConnect import db_url
 
 from langchain_postgres import PGVector
 
-async def chunk_pdf(file):
+from sqlalchemy.orm import Session
+
+async def chunk_pdf(file, db: Session):
 
     if not file.filename.lower().endswith(".pdf"):
         raise HTTPException(
@@ -40,7 +42,7 @@ async def chunk_pdf(file):
         print("Successfully Created Chunks")
 
         # 3. Generate embeddings
-        embeds = await gen_embedding(chunks)
+        # embeds = await gen_embedding(chunks)
 
         vector_store = PGVector(
             embeddings=embeddings_model,
@@ -51,8 +53,10 @@ async def chunk_pdf(file):
 
         vector_store.add_documents(chunks)
 
-        if not embeds:
-            raise HTTPException(detail="Not able to gen embeds")
+        # print(embeds)
+
+        # if not embeds:
+        #     raise HTTPException(detail="Not able to gen embeds")
 
         return {
             "filename": file.filename,

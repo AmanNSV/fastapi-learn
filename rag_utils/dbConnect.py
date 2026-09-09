@@ -54,5 +54,5 @@ def db_connection():
     finally:
         pass
 
-if __name__ == "__main__":
-    db_connection()
+# if __name__ == "__main__":
+#     db_connection()
